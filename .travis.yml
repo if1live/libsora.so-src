@@ -1,0 +1,24 @@
+language: cpp
+
+compiler:
+  - clang+
+  - g++
+  - i686-w64-mingw32-g++
+
+script:
+  - cd simple_mesh
+  - cmake CMakeLists.txt
+  - make
+  - cd ..
+  - cd text_billboard
+  - cmake CMakeLists.txt
+  - make
+  - cd ..
+  - cd text_label
+  - cmake CMakeLists.txt
+  - make
+  - cd ..
+  - cd vincent_font
+  - cmake CMakeLists.txt
+  - make
+  - cd ..
