@@ -31,6 +31,7 @@ Last pixel row of a line of characters is a delimiter with color=zero at the las
 #include <vector>
 #include <array>
 #include <memory>
+#include <string>
 #include <type_traits>
 
 #if (defined(_WIN32) || defined(_W64))

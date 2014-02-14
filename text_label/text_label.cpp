@@ -291,13 +291,13 @@ std::unique_ptr<TexFont> TexFont::GenerateFont(const unsigned char *_Bitmap, int
 
 	lmax += 16*MARGIN_X;
 	// - Second, build the texture
-	std::unique_ptr<TexFont> TexFont(new TexFont());
-	TexFont->m_NbCharRead = ch-32;
-	TexFont->m_CharHeight = (int)(_Scaling*h+0.5f);
-	TexFont->m_TexWidth = NextPow2(lmax);
-	TexFont->m_TexHeight = NextPow2(14*(h+MARGIN_Y));
-	TexFont->m_TexBytes = new unsigned char[TexFont->m_TexWidth*TexFont->m_TexHeight];
-	std::fill(TexFont->m_TexBytes, TexFont->m_TexBytes + (TexFont->m_TexWidth*TexFont->m_TexHeight), 0);
+	std::unique_ptr<TexFont> texFont(new TexFont());
+	texFont->m_NbCharRead = ch - 32;
+	texFont->m_CharHeight = (int)(_Scaling*h + 0.5f);
+	texFont->m_TexWidth = NextPow2(lmax);
+	texFont->m_TexHeight = NextPow2(14 * (h + MARGIN_Y));
+	texFont->m_TexBytes = new unsigned char[texFont->m_TexWidth*texFont->m_TexHeight];
+	std::fill(texFont->m_TexBytes, texFont->m_TexBytes + (texFont->m_TexWidth*texFont->m_TexHeight), 0);
 
 	int xx;
 	float du = 0.4f;
@@ -321,28 +321,28 @@ std::unique_ptr<TexFont> TexFont::GenerateFont(const unsigned char *_Bitmap, int
 					{
 						alpha = ((float)(_Bitmap[x+(y0[ch]+y)*_BmWidth]))/256.0f;
 						//alpha = alpha*sqrtf(alpha); // powf(alpha, 1.5f);   // some gamma correction
-						TexFont->m_TexBytes[(xx+x-x0[ch])+(r*(h+MARGIN_Y)+y)*TexFont->m_TexWidth] = (unsigned char)(alpha*256.0f);
+						texFont->m_TexBytes[(xx + x - x0[ch]) + (r*(h + MARGIN_Y) + y)*texFont->m_TexWidth] = (unsigned char)(alpha*256.0f);
 					}
-					TexFont->m_CharU0[ch+32] = (float(xx)+du)/float(TexFont->m_TexWidth);
+					texFont->m_CharU0[ch + 32] = (float(xx) + du) / float(texFont->m_TexWidth);
 					xx += x1[ch]-x0[ch]+1;
-					TexFont->m_CharU1[ch+32] = (float(xx)+du)/float(TexFont->m_TexWidth);
-					TexFont->m_CharV0[ch+32] = (float(r*(h+MARGIN_Y))+dv)/float(TexFont->m_TexHeight);
-					TexFont->m_CharV1[ch+32] = (float(r*(h+MARGIN_Y)+h)+dv)/float(TexFont->m_TexHeight);
-					TexFont->m_CharWidth[ch+32] = (int)(_Scaling*(x1[ch]-x0[ch]+1)+0.5f);
+					texFont->m_CharU1[ch + 32] = (float(xx) + du) / float(texFont->m_TexWidth);
+					texFont->m_CharV0[ch + 32] = (float(r*(h + MARGIN_Y)) + dv) / float(texFont->m_TexHeight);
+					texFont->m_CharV1[ch + 32] = (float(r*(h + MARGIN_Y) + h) + dv) / float(texFont->m_TexHeight);
+					texFont->m_CharWidth[ch + 32] = (int)(_Scaling*(x1[ch] - x0[ch] + 1) + 0.5f);
 					xx += MARGIN_X;
 			}
 
 			const unsigned char Undef = 127; // default character used as for undifined ones (having ascii codes from 0 to 31)
 			for( ch=0; ch<32; ++ch )
 			{
-				TexFont->m_CharU0[ch] = TexFont->m_CharU0[Undef];
-				TexFont->m_CharU1[ch] = TexFont->m_CharU1[Undef];
-				TexFont->m_CharV0[ch] = TexFont->m_CharV0[Undef];
-				TexFont->m_CharV1[ch] = TexFont->m_CharV1[Undef];
-				TexFont->m_CharWidth[ch] = TexFont->m_CharWidth[Undef]/2;
+				texFont->m_CharU0[ch] = texFont->m_CharU0[Undef];
+				texFont->m_CharU1[ch] = texFont->m_CharU1[Undef];
+				texFont->m_CharV0[ch] = texFont->m_CharV0[Undef];
+				texFont->m_CharV1[ch] = texFont->m_CharV1[Undef];
+				texFont->m_CharWidth[ch] = texFont->m_CharWidth[Undef] / 2;
 			}
 
-			return TexFont;
+			return texFont;
 }
 
 
