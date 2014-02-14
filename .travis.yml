@@ -12,17 +12,21 @@ before_install:
 script:
   - cd simple_mesh
   - cmake CMakeLists.txt
+  - cmake CMakeLists.txt
   - make
   - cd ..
   - cd text_billboard
+  - cmake CMakeLists.txt
   - cmake CMakeLists.txt
   - make
   - cd ..
   - cd text_label
   - cmake CMakeLists.txt
+  - cmake CMakeLists.txt
   - make
   - cd ..
   - cd vincent_font
+  - cmake CMakeLists.txt
   - cmake CMakeLists.txt
   - make
   - cd ..

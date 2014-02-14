@@ -8,7 +8,7 @@ const int kHeight = 300;
 
 using namespace haruna::gl;
 
-void RenderLabel(haruna::gl::Label &label, float x, float y)
+void RenderLabel(const haruna::gl::Label &label, float x, float y)
 {
 	glPushMatrix();
 	{

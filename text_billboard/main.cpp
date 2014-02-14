@@ -40,7 +40,7 @@ GLenum DrawModeToGLMode(haruna::DrawType draw_mode)
 	}
 }
 
-void RenderMesh(std::vector<DrawCmdData<Vertex_1P1N1UV>> &draw_cmd_list)
+void RenderMesh(const std::vector<DrawCmdData<Vertex_1P1N1UV>> &draw_cmd_list)
 {
     auto it = draw_cmd_list.begin();
     auto endit = draw_cmd_list.end();
@@ -55,7 +55,7 @@ void RenderMesh(std::vector<DrawCmdData<Vertex_1P1N1UV>> &draw_cmd_list)
     }
 }
 
-void RenderBillboardLabel(haruna::gl::Label &label, float x, float y, float z)
+void RenderBillboardLabel(const haruna::gl::Label &label, float x, float y, float z)
 {	
 	mat4 mvp = g_proj_mat * g_view_mat * g_model_mat;
 	

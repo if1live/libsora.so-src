@@ -1,6 +1,7 @@
 ﻿// Ŭnicode please
 #include "sys_font.h"
 #include <algorithm>
+#include <climits>
 #include "vincent.h"
 
 namespace haruna {;
