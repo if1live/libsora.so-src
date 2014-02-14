@@ -2,8 +2,8 @@
 #ifdef _MSC_VER
 	#include <Windows.h>
 #endif
-#include <gl/GL.h>
-#include <gl/GLU.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
 #include <GLFW/glfw3.h>
 #include <cstdlib>
 #include <cassert>
