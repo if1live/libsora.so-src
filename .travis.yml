@@ -5,6 +5,10 @@ compiler:
   - gcc
   - i686-w64-mingw32-gcc
 
+before_install:
+  # https://github.com/tyoc213/secret-wokie2/blob/master/.travis.yml
+  - sudo apt-get install -qq x11proto-xf86vidmode-dev xorg-dev libglu1-mesa-dev
+
 script:
   - cd simple_mesh
   - cmake CMakeLists.txt
