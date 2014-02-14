@@ -7,3 +7,6 @@
 [submodule "ext/glew"]
 	path = ext/glew
 	url = https://github.com/omniavinco/glew-cmake.git
+[submodule "ext/cmake"]
+	path = ext/cmake
+	url = https://github.com/shipduck/cmake-lib.git
