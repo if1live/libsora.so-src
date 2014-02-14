@@ -70,7 +70,7 @@ int main()
 			lines.push_back(std::string("2.Line"));
 
 			TextLabelConfig cfg;
-			label.BuildText(lines, g_DefaultFixed1Font.get(), cfg);
+			label.BuildTextLines(lines, g_DefaultFixed1Font.get(), cfg);
 			g_fontDevice->DrawText(&label, 100, 100, COLOR32_GREEN, COLOR32_WHITE);
 		}
 		{
@@ -118,7 +118,7 @@ int main()
 			cfg.line_bg_colors = bg_colors;
 			cfg.bg_width = 100;
 			cfg.sep = 10;
-			label.BuildText(lines, g_DefaultFixed1Font.get(), cfg);
+			label.BuildTextLines(lines, g_DefaultFixed1Font.get(), cfg);
 			g_fontDevice->DrawText(&label, 100, 100, 0, 0);
 		}
 

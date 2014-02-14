@@ -122,12 +122,12 @@ public:
 	const TexFont *font;
 
 public:
-	//void BuildText(const std::string &_Text, color32 *_LineColors, color32 *_LineBgColors, const TexFont &_Font, int _Sep, int _BgWidth);
-
 	template<typename StringContainer>
-	void BuildText(const StringContainer &_TextLines, const TexFont *_Font, const TextLabelConfig &cfg);
-	template<>
-	void BuildText(const std::string &_Text, const TexFont *_Font, const TextLabelConfig &cfg);
+	void BuildTextLines(const StringContainer &_TextLines, const TexFont *_Font, const TextLabelConfig &cfg);
+	void BuildText(const std::string &_Text, const TexFont *_Font, const TextLabelConfig &cfg) {
+		std::array<std::string, 1> textLine = { _Text };
+		BuildTextLines(textLine, _Font, cfg);
+	}
 };
 
 
@@ -161,9 +161,9 @@ extern std::unique_ptr<OpenGLFontDevice> g_fontDevice;
 
 // template 
 template<typename StringContainer>
-void TextLabel::BuildText(const StringContainer &_TextLines, const TexFont *_Font, const TextLabelConfig &cfg)
+void TextLabel::BuildTextLines(const StringContainer &_TextLines, const TexFont *_Font, const TextLabelConfig &cfg)
 {
-	static_assert(std::is_same<std::string, StringContainer::value_type>::value == 1, 
+	static_assert(std::is_same<std::string, typename StringContainer::value_type>::value == 1, 
 		"allow only value_type=std::string");
 
 	this->font = _Font;
@@ -252,10 +252,4 @@ void TextLabel::BuildText(const StringContainer &_TextLines, const TexFont *_Fon
 	}
 }
 
-template<>
-void TextLabel::BuildText(const std::string &_Text, const TexFont *_Font, const TextLabelConfig &cfg)
-{
-	std::array<std::string, 1> textLine = { _Text };
-	BuildText(textLine, _Font, cfg);
-}
 }	// namespace haruna
