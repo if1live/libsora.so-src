@@ -3,13 +3,12 @@ language: cpp
 compiler:
   - clang
   - gcc
-  - i686-w64-mingw32-gcc
 
 before_install:
   # https://github.com/tyoc213/secret-wokie2/blob/master/.travis.yml
   # https://github.com/ioquake/ioq3/blob/master/.travis.yml
   # http://stackoverflow.com/questions/3933027/how-to-get-the-gl-library-headers
-  - sudo apt-get install -q -y libgl1-mesa-dev libglu1-mesa-dev mingw-w64 x11proto-xf86vidmode-dev xorg-dev mesa-common-dev
+  - sudo apt-get install -q -y libgl1-mesa-dev libglu1-mesa-dev x11proto-xf86vidmode-dev xorg-dev mesa-common-dev
 
 script:
   - cd simple_mesh
