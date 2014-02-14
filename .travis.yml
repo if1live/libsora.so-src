@@ -1,9 +1,9 @@
 language: cpp
 
 compiler:
-  - clang+
-  - g++
-  - i686-w64-mingw32-g++
+  - clang
+  - gcc
+  - i686-w64-mingw32-gcc
 
 script:
   - cd simple_mesh
