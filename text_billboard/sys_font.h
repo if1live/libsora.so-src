@@ -4,7 +4,7 @@
 #if (defined(_WIN32) || defined(_w64))
 #include <Windows.h>
 #endif
-#include <GL/GL.h>
+#include <GL/gl.h>
 
 #include <vector>
 #include <string>

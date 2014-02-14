@@ -36,7 +36,7 @@ Last pixel row of a line of characters is a delimiter with color=zero at the las
 #if (defined(_WIN32) || defined(_W64))
 #include "windows.h"
 #endif
-#include <GL/GL.h>
+#include <GL/gl.h>
 
 namespace haruna {;
 
