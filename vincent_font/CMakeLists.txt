@@ -4,6 +4,8 @@ PROJECT( "vincent_font" )
 SET( EXT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../ext )
 SET( SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR} )
 
+INCLUDE( FindOpenGL )
+
 LIST( APPEND CMAKE_MODULE_PATH "${EXT_DIR}/cmake" )
 INCLUDE( compiler_option )
 
@@ -32,7 +34,6 @@ INCLUDE_DIRECTORIES( ${EXT_DIR}/glm/glm )
 #########################################################
 
 IF( APPLE )
-	FIND_LIBRARY( OPENGL_LIB OpenGL )
 	FIND_LIBRARY( COCOA_LIB Cocoa )
 	FIND_LIBRARY( IOKIT_LIB IOKit )
 	APPEND_LINK_LIBS( ${IOKIT_LIB} ${COCOA_LIB} )
@@ -51,14 +52,17 @@ ELSE(  )
 			${XI_LIB} )
 ENDIF(  )
 
-IF( WIN32 )
-	SET( GL_LIBRARY opengl32 glu32 )
-ELSEIF( APPLE )
-	FIND_LIBRARY( GL_LIBRARY OpenGL )
+IF( ${OPENGL_FOUND} )
+	APPEND_LINK_LIBS( ${OPENGL_gl_LIBRARY} )
 ELSE(  )
-	FIND_LIBRARY( GL_LIBRARY GL)
+	MESSAGE(SEND_ERROR "Cannot Find OpenGL")
 ENDIF(  )
-APPEND_LINK_LIBS( ${GL_LIBRARY} )
+
+IF( ${OPENGL_GLU_FOUND} )
+	APPEND_LINK_LIBS( ${OPENGL_glu_LIBRARY} )
+ELSE(  )
+	MESSAGE(SEND_ERROR "Cannot Find GLU")
+ENDIF(  )
 
 #########################################################
 
