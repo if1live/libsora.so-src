@@ -60,6 +60,15 @@ ELSE(  )
 ENDIF(  )
 APPEND_LINK_LIBS( ${GL_LIBRARY} )
 
+IF( WIN32 )
+	SET( GLU_LIBRARY glu32)
+ELSEIF( APPLE )
+	FIND_LIBRARY( GLU_LIBRARY GLU)
+ELSE(  )
+	FIND_LIBRARY( GLU_LIBRARY GLU)
+ENDIF(  )
+APPEND_LINK_LIBS( ${GLU_LIBRARY} )
+
 #########################################################
 
 FILE( GLOB SRC_FILES "${SRC_DIR}/*.cpp" "${SRC_DIR}/*.h" )

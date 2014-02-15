@@ -467,7 +467,10 @@ std::vector<DrawCmdData<Vertex_1P1N1UV>> SolidTeapotFactory::CreateNormalMesh()
 	}
 
 	cmd.index_list.resize(NUM_TEAPOT_OBJECT_INDEX);
-	memcpy(&cmd.index_list[0], teapotIndices, sizeof(teapotIndices));
+	int src_count = sizeof(teapotIndices) / sizeof(teapotIndices[0]);
+	auto src_begin = teapotIndices;
+	auto src_end = teapotIndices + src_count;
+	std::copy(src_begin, src_end, cmd.index_list.begin());
 
 	std::vector<DrawCmdData<Vertex_1P1N1UV>> cmd_list;
 	cmd_list.push_back(cmd);
