@@ -139,7 +139,7 @@ int main()
 
 		//render 3d
 		{
-			g_proj_mat = glm::perspective(60.0f, (float)(kWidth / kHeight), 0.1f, 100.0f);
+			g_proj_mat = glm::perspective(glm::radians(60.0f), (float)(kWidth / kHeight), 0.1f, 100.0f);
 			g_view_mat = glm::lookAt(glm::vec3(0, 2, 5), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
 
 			glMatrixMode(GL_PROJECTION);
@@ -198,7 +198,7 @@ int main()
 		// Check if ESC key was pressed or window was closed
 		running = !glfwGetKey(window, GLFW_KEY_ESCAPE);
 
-		rot += 0.03;
+		rot += glm::radians(0.03f);
 		
 	}
 

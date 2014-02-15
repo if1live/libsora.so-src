@@ -30,6 +30,7 @@ APPEND_LINK_LIBS( glfw )
 # Add GLM
 INCLUDE_DIRECTORIES( ${EXT_DIR}/glm )
 INCLUDE_DIRECTORIES( ${EXT_DIR}/glm/glm )
+ADD_DEFINITIONS( -DGLM_FORCE_RADIANS )
 
 #########################################################
 
